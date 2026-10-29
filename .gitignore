@@ -1,0 +1,4 @@
+*-copia-*.json
+*.zip
+node_modules/
+test-results/
