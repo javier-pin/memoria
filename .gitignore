@@ -2,3 +2,10 @@
 *.zip
 node_modules/
 test-results/
+REQUISITOS-*.md
+*-copia-*.json
+publicada*.png
+pruebas-*.png
+update-source.cjs
+finalize-source.cjs
+README-v03.md

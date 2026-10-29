@@ -7,7 +7,7 @@ function updateHealth() {
   const restored = data.settings.find(s => s.id === 'lastRestore');
   const total = data.notes.reduce((sum, n) => sum + n.files.reduce((s, f) => s + f.size, 0), 0);
   const lines = [
-    'Versión 0.3 · Solo en este navegador. Sin sincronización con otros dispositivos.',
+    'Versión 0.4 · Solo en este navegador. Sin sincronización con otros dispositivos.',
     `${data.notes.filter(n => !n.deletedAt).length} recuerdos · ${data.notes.filter(n => n.deletedAt).length} en papelera · ${(total / 1048576).toFixed(1)} MB de originales`,
     storageInfo,
     exported ? 'Última copia preparada: ' + new Date(exported).toLocaleString('es-ES') + '. Comprueba el archivo descargado.' : 'Aún no has exportado una copia desde esta versión.',

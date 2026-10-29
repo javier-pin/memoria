@@ -1,6 +1,14 @@
-# MEMORIA 0.3
+# MEMORIA 0.4 — recepción compartida
 
 PWA estática sin dependencias de producción. Notas, adjuntos originales, Personal/Trabajo, carpetas anidadas, etiquetas, bandeja, vistas y tema. Datos locales en IndexedDB. No contiene archivos personales ni credenciales.
+
+## Nuevo en 0.4
+
+Web Share Target POST multipart para texto, enlaces y archivos. El service worker guarda el contenido localmente antes de redirigir al editor. Se recibe por defecto en la bandeja de Personal con la marca «por revisar»; puede elegirse Trabajo en el formulario. Cerrar la ficha conserva lo recibido. No se consulta automáticamente la web compartida ni se envían archivos a GitHub. Enlaces http/https con apertura voluntaria; vídeos y audios locales tienen controles de reproducción según soporte del navegador.
+
+La app debe estar instalada y actualizada para aparecer como destino Android. El registro del sistema puede tardar en actualizarse; falta verificar el menú Compartir físicamente en el móvil del usuario. No desinstalar ni borrar datos del sitio para forzar la actualización sin disponer de copia verificada.
+
+Recibir un enlace de Maps no extrae todavía dirección/coordenadas: se conserva el enlace y su texto. Mapa, fichas de ubicaciones, favoritos y filtros avanzados siguen pendientes. Esta versión cubre la base de captura de la fase 0.4.
 
 ## Protección incorporada
 
@@ -14,7 +22,7 @@ PWA estática sin dependencias de producción. Notas, adjuntos originales, Perso
 
 ## Límites actuales
 
-Sin Google, Drive, sincronización, cifrado, PIN, compartir nativo Android, tareas, OCR ni IA. Los espacios son separación organizativa. Las copias contienen información legible y deben guardarse de forma privada.
+Sin Google, Drive, sincronización, cifrado, PIN, tareas, OCR ni IA. Los espacios son separación organizativa. Las copias contienen información legible y deben guardarse de forma privada.
 
 Los datos pertenecen al navegador y al origen web. Borrar datos del sitio o perder el dispositivo puede hacerlos desaparecer. Solicitar almacenamiento persistente depende del navegador y no reemplaza copias independientes. No hay copias automáticas ni garantía de ejecución diaria en segundo plano.
 
@@ -25,6 +33,8 @@ Adjuntos eliminados al editar una nota no tienen historial propio: hacer copia a
 ## Pruebas
 
 Ejecutar `node serve.cjs` y abrir http://127.0.0.1:4173/tests.html. Se crean y eliminan solo bases ficticias `memoria-test-<UUID>`. Se prueba migración, exportar/restaurar originales y relaciones, corrupción, transacciones fallidas, duplicados y conflictos. No toca la base `memoria` del usuario. Cerrar pestañas antiguas si la actualización de base queda bloqueada.
+
+tests-capture.html: seis pruebas de recepción, originales y URLs en bases aisladas. tests-share-form.html es un formulario de ejemplo ficticio que sí crea una nota de prueba en la base local normal: precargar, parar servidor y enviar permite verificar el receptor real offline. No es una prueba de presencia en el selector nativo Android.
 
 Prueba sin servidor: abrir app y esperar preparación; detener servidor y recargar. Probar también físicamente en Android con modo avión.
 

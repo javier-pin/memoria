@@ -25,9 +25,9 @@ const MemoriaStore = (() => {
         if (!r.result.objectStoreNames.contains(store)) r.result.createObjectStore(store, { keyPath: 'id' });
       }
     };
-    r.onblocked = () => window.dispatchEvent(new Event('memoria-blocked'));
+    r.onblocked = () => { if (typeof window !== 'undefined') window.dispatchEvent(new Event('memoria-blocked')); };
     const db = await req(r);
-    db.onversionchange = () => { db.close(); window.dispatchEvent(new Event('memoria-blocked')); };
+    db.onversionchange = () => { db.close(); if (typeof window !== 'undefined') window.dispatchEvent(new Event('memoria-blocked')); };
     return db;
   }
 
